@@ -32,5 +32,10 @@ public ToDo getTodo( Integer id){
 	
 }
 
+public void createToDo(ToDo todo) {
+	// TODO Auto-generated method stub
+	todos.add(todo);
+}
+
 
 }
