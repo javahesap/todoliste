@@ -34,14 +34,14 @@ public void createTodo(@RequestBody ToDo todo) {
 
 
 @RequestMapping(method=RequestMethod.PUT,  value="/todos/{id}")
-public void updateTodo(@RequestBody Integer id,@RequestBody ToDo todo) {
+public void updateTodo(@PathVariable Integer id,@RequestBody ToDo todo) {
 	toDoService.updateToDo(id,todo);
 	
 }
 
 
 @RequestMapping(method=RequestMethod.DELETE,  value="/todos/{id}")
-public void deleteTodo(@RequestBody Integer id) {
+public void deleteTodo(@PathVariable Integer id) {
 	toDoService.deleteToDo(id);
 	
 }
