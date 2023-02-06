@@ -37,5 +37,27 @@ public void createToDo(ToDo todo) {
 	todos.add(todo);
 }
 
+public  void updateToDo(Integer id,ToDo todo) {
+	// TODO Auto-generated method stub
+	for(int i=0;i<todos.size();i++) {
+		ToDo t =todos.get(i);
+		if(t.getId().equals(id)) {
+			
+			todos.set(i, todo);
+			return;
+		}
+		
+	}
+}
+
+
+public  void deleteToDo(Integer id) {
+	// TODO Auto-generated method stub
+	todos.removeIf(q->q.getId().equals(id));
+}
+
+
+
+
 
 }

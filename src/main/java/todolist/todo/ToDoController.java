@@ -26,11 +26,23 @@ public class ToDoController {
 		return toDoService.getTodo(id);		
 	}
 
-
-  
 @RequestMapping(method=RequestMethod.POST,  value="/todos")
 public void createTodo(@RequestBody ToDo todo) {
 	toDoService.createToDo(todo);
+	
+}
+
+
+@RequestMapping(method=RequestMethod.PUT,  value="/todos/{id}")
+public void updateTodo(@RequestBody Integer id,@RequestBody ToDo todo) {
+	toDoService.updateToDo(id,todo);
+	
+}
+
+
+@RequestMapping(method=RequestMethod.DELETE,  value="/todos/{id}")
+public void deleteTodo(@RequestBody Integer id) {
+	toDoService.deleteToDo(id);
 	
 }
 
