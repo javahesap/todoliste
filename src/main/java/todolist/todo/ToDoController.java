@@ -1,6 +1,7 @@
 package todolist.todo;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
-@Controller
+
 public class ToDoController {	
 	@Autowired
 	private ToDoService toDoService;
@@ -21,7 +22,7 @@ public class ToDoController {
 	}
 	
 @RequestMapping("/todos/{id}")	
-	public ToDo getTodo(@PathVariable Integer id){		
+	public Optional<ToDo> getTodo(@PathVariable Integer id){		
 		
 		return toDoService.getTodo(id);		
 	}

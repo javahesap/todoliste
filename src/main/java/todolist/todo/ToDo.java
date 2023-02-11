@@ -1,6 +1,13 @@
 package todolist.todo;
 
+
+
+import javax.persistence.*;
+@Table(name="todo")
+@Entity
 public class ToDo {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 Integer id;
 String name;
 String sumary;

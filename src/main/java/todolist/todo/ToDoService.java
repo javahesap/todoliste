@@ -4,13 +4,16 @@ import java.util.ArrayList;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 @Service
+
 public class ToDoService {
 
-public List<ToDo> todos=new ArrayList<>(
+/*public List<ToDo> todos=new ArrayList<>(
 		
 		Arrays.asList(
 				
@@ -21,25 +24,33 @@ public List<ToDo> todos=new ArrayList<>(
 				
 				)
 		
-		);
+		);*/
+
+@Autowired
+private ToDoRepository toDoRepository;
 
 public List<ToDo> getAllToDos(){
+	List<ToDo> todos=new ArrayList<>();
+	
+	toDoRepository.findAll().forEach(todos::add);
 	return todos;
 }
 
-public ToDo getTodo( Integer id){
-	return todos.stream().filter(p->p.getId().equals(id)).findFirst().get();
+public Optional<ToDo> getTodo( Integer id){
+	//return todos.stream().filter(p->p.getId().equals(id)).findFirst().get();
+	return toDoRepository.findById(id);
 	
 }
 
 public void createToDo(ToDo todo) {
 	// TODO Auto-generated method stub
-	todos.add(todo);
+	//todos.add(todo);
+	toDoRepository.save(todo);
 }
 
 public  void updateToDo(Integer id,ToDo todo) {
 	// TODO Auto-generated method stub
-	for(int i=0;i<todos.size();i++) {
+	/*for(int i=0;i<todos.size();i++) {
 		ToDo t =todos.get(i);
 		if(t.getId().equals(id)) {
 			
@@ -47,13 +58,15 @@ public  void updateToDo(Integer id,ToDo todo) {
 			return;
 		}
 		
-	}
+	}*/
+	toDoRepository.save(todo);
 }
 
 
 public  void deleteToDo(Integer id) {
 	// TODO Auto-generated method stub
-	todos.removeIf(q->q.getId().equals(id));
+	//todos.removeIf(q->q.getId().equals(id));
+	toDoRepository.deleteById(id);;
 }
 
 
